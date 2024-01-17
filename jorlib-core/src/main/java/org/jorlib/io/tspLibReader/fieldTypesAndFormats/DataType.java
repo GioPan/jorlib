@@ -55,6 +55,14 @@ public enum DataType {
 	/**
 	 * A collection of tours.
 	 */
-	TOUR
+	TOUR,
+	/**
+	 * Data for an asymmetric generalized traveling salesman problem.
+	 */
+	AGTSP,
+	/**
+	 * Data for a symmetric generalized traveling salesman problem.
+	 */
+	GTSP
 
 }
