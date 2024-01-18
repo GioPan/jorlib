@@ -373,6 +373,14 @@ public class GTSPLibInstance {
 	}
 
 	/**
+	 * A surrogate for getDimension().
+	 * @return the dimension of the problem (number of nodes)
+	 */
+	public int getnNodes(){
+		return getDimension();
+	}
+
+	/**
 	 * Returns the truck capacity in CVRP problem instances.  The return value
 	 * is undefined if the data type is not {@code CVRP}.
 	 * 
@@ -440,6 +448,17 @@ public class GTSPLibInstance {
 	 */
 	public DistanceTable getDistanceTable() {
 		return distanceTable;
+	}
+
+	/**
+	 * A wrapper around get distance table. This allows indexing the nodes from
+	 * 1..nNodes, instead for 0..nNodes-1.
+	 * @param i a node
+	 * @param j another node
+	 * @return the distance
+	 */
+	public double getDistance(int i, int j){
+		return distanceTable.getDistanceBetween(i-1,j-1);
 	}
 
 	/**

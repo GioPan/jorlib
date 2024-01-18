@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.jorlib.io.tspLibReader.GTSPLibInstance;
-import org.jorlib.io.tspLibReader.TSPLibInstance;
 
 import javax.swing.*;
 
@@ -19,7 +18,7 @@ public final class TSPDemo {
 	public TSPDemo() throws IOException{
 		//Read a TSP instance from the TSPLib, as well as a TSP tour 
 		File directory = new File("/Users/lct495/Documents/jorlib/data/gtspLib/");
-		File instanceData = new File(directory, "89rbg443.gtsp");
+		File instanceData = new File(directory, "4br17.gtsp");
 		//File optimalTour = new File(directory, "ulysses16.opt.tour");
 		
 		//Create a TSP instance, thereby parsing the TSPLib file
@@ -32,13 +31,17 @@ public final class TSPDemo {
 		System.out.println("Number of vertices: "+problem.getDimension());
 		System.out.println("Number of registered tours: "+problem.getTours().size());
 		System.out.println("Number of clusters:"+problem.getnClusters());
-		System.out.println("Distance "+problem.getDistanceTable().getDistanceBetween(110,15));
 		for(int k = 1; k <= problem.getnClusters(); k++){
 			System.out.println("Cluster "+k);
 			for(int i: problem.getClusters()[k-1]){
 				System.out.print(i+" ");
 			}
 			System.out.println();
+		}
+		for(int i = 1; i <= problem.getDimension(); i++){
+			for(int j = 1; j <= problem.getDimension(); j++){
+				System.out.println(i+" "+j+" = "+ problem.getDistance(i,j));
+			}
 		}
 		System.out.println();
 		//System.out.println("Length of registered tour: "+problem.getTours().get(0).distance(problem));
