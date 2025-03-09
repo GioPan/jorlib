@@ -2,8 +2,10 @@ package org.jorlib.demo.io.tspLibReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.jorlib.io.tspLibReader.GTSPLibInstance;
+import org.jorlib.io.tspLibReader.TSPLibTour;
 
 import javax.swing.*;
 
@@ -45,6 +47,17 @@ public final class TSPDemo {
 		}
 		System.out.println();
 		//System.out.println("Length of registered tour: "+problem.getTours().get(0).distance(problem));
+
+		File tourData = new File(directory, "4br17.31.tour");
+		problem.addTour(tourData);
+
+		List<TSPLibTour> tours = problem.getTours();
+		for(TSPLibTour t : tours){
+			System.out.println("Tour size " + t.size());
+			for(int i =1 ; i <= t.size(); i++){
+				System.out.println(t.get(i-1));
+			}
+		}
 	}
 	
 	public static void main(String[] args){
